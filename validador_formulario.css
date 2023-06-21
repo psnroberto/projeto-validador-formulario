@@ -1,0 +1,133 @@
+@charset "UTF-8";
+
+:root {
+    --cor1: #04070df1;
+    --cor2: #F2B988;
+    --cor3: #BF4E6D;
+    --cor4: #A64E4E;
+    --cor5: #1e2a3b;
+    --fonte-padrao: Arial, sans-serif;
+    --fonte-especial:
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fonte-padrao);
+    background-color: var(--cor1);
+    color: var(--cor2);
+    width: 100vw;
+    height: 100vh;
+}
+
+main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 3px solid #bf4e6c50;
+    border-radius: 25px 0px 25px 0px;
+    box-shadow: 1px 1px 10px #bf4e6c67;
+    width: 40%;
+    padding: 20px;
+    transform: translate(-50%, -50%);
+}
+
+.titulo-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-weight: bold;
+}
+
+.titulo-section h2 {
+    text-align: center;
+}
+
+.titulo-section ul {
+    margin-left: 20px;
+}
+
+.titulo-section ul li {
+    margin-bottom: 5px;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.inputs {
+    height: 25px;
+    font-size: 1em;
+    padding: 5px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.btns {
+    border: 1px solid var(--cor3);
+    background-color: var(--cor3);
+    color: white;
+    width: 125px;
+    height: 40px;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    box-shadow: 1px 1px 5px #bf4e6c7e;
+}
+
+.btns:hover {
+    background-color: #324763;
+    border: none;
+    box-shadow: none;
+    transition: 0.2s;
+}
+
+div.erro-formulario {
+    position: absolute;
+    right: 2%;
+    top: 6%;
+    background-color: white;
+    color: black;
+    padding: 10px;
+    font-size: 0.9em;
+    border-radius: 10px;
+    display: none;
+}
+
+div.erro-formulario h3 {
+    margin-bottom: 10px;
+}
+
+div.erro-formulario p {
+    margin-bottom: 5px;
+    display: none;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+    width: 100vw;
+}
+
+footer p {
+    font-weight: normal;
+    font-size: 0.9em;
+}

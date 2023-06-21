@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Validador de Formulário</title>
+
+    <link rel="stylesheet" href="validador_formulario.css">
+
+</head>
+<body>
+    <main>
+        <section class="titulo-section">
+            <h2>Formulário de Cadastro</h2>
+            <ul>
+                <li>Nenhum campo pode estar vazio;</li>
+                <li>O campo "usuário" deverá conter apenas letras e/ou números;</li>
+                <li>O campo "usuário" deverá conter entre 3 e 12 caracteres;</li>
+                <li>A senha deverá ter entre 6 e 12 caracteres.</li>
+            </ul>
+        </section>
+
+        <section class="form-section">
+            <form action="" method="post" class="formulario">
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" id="nome" class="inputs">
+
+                <label for="sobrenome">Sobrenome:</label>
+                <input type="text" name="sobrenome" id="sobrenome" class="inputs">
+
+                <label for="cpf">CPF:</label>
+                <input type="text" name="cpf" id="cpf" class="inputs">
+
+                <label for="usuario">Usuário:</label>
+                <input type="text" name="usuario" id="usuario" class="inputs">
+
+                <label for="senha">Senha:</label>
+                <input type="text" name="senha" id="senha" class="inputs">
+
+                <label for="repetir-senha">Repetir senha:</label>
+                <input type="text" name="repetir-senha" id="repetir-senha" class="inputs">
+            </form>
+
+            <div class="buttons">
+                <input type="button" value="Enviar" class="btns btn-enviar">
+                <input type="button" value="Limpar" class="btns btn-limpar">
+            </div>
+        </section>
+    </main>
+    
+    <div class="erro-formulario">
+
+        <h3>
+            Ajuste seu formulário:
+        </h3>
+        <p class="erro-paragrafo">
+            Deve ser informado um número de CPF válido.
+        </p>
+        <p class="erro-paragrafo">
+            O campo "usuário" deve conter apenas letras e/ou números.
+        </p>
+        <p class="erro-paragrafo">
+            O campo "usuário" deve conter entre 3 e 12 caracteres.
+        </p>
+        <p class="erro-paragrafo">
+            O campo "senha" deve conter entre 3 e 12 caracteres.
+        </p>
+        <p class="erro-paragrafo">
+            As senhas informadas devem ser iguais.
+        </p>
+        <p class="erro-paragrafo">
+            Todos os campos do formulário devem ser preenchidos.
+        </p>
+    </div>
+
+    <footer>
+        <p>Baseado em projeto do curso de JavaScript do Luiz Otávio Miranda</p>
+    </footer>
+
+    <script src="validador_formulario.js"></script>
+    
+</body>
+</html>
