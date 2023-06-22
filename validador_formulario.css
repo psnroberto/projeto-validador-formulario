@@ -31,7 +31,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    border: 3px solid #bf4e6c50;
+    border: 3px solid #d87791c7;
     border-radius: 25px 0px 25px 0px;
     box-shadow: 1px 1px 10px #bf4e6c67;
     width: 40%;
@@ -129,5 +129,5 @@ footer {
 
 footer p {
     font-weight: normal;
-    font-size: 0.9em;
+    font-size: 0.8em;
 }

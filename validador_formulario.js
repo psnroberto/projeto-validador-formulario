@@ -22,7 +22,11 @@ function formataCPF() {
 }
 
 function voltaCPF() {
-    cpf.value = cpf.value.replace(/\D+/g, '')
+    if (cpf.value === '') {
+        cpf.value === ''
+    } else {
+        cpf.value = cpf.value.replace(/\D+/g, '')
+    }
 }
 
 function enviaFormulario() {
@@ -155,25 +159,40 @@ class Formulario {
 
     validaFormulario() {
 
-        if (this.validaCPF() === false ||
-            this.validaUsuarioCaracter() === false ||
-            this.validaUsuarioComprimento() === false ||
-            this.validaSenha() === false ||
-            this.validaRepetirSenha() === false ||
-            this.validaPreenchimento() === false
-        ) {
+        let validador = true
+
+        if (this.validaCPF() === false) {
+            ajusteFormParagrafo[0].style.display = 'block'
+            validador = false
+        }
+        if (this.validaUsuarioCaracter() === false) {
+            ajusteFormParagrafo[1].style.display = 'block'
+            validador = false
+        }
+        if (this.validaUsuarioComprimento() === false) {
+            ajusteFormParagrafo[2].style.display = 'block'
+            validador = false
+        }
+        if (this.validaSenha() === false) {
+            ajusteFormParagrafo[3].style.display = 'block'
+            validador = false
+        }
+        if (this.validaRepetirSenha() === false) {
+            ajusteFormParagrafo[4].style.display = 'block'
+            validador = false
+        }
+        if (this.validaPreenchimento() === false) {
+            ajusteFormParagrafo[5].style.display = 'block'
+            validador = false
+        }
+
+        if (validador === false) {
             ajusteFormDiv.style.display = 'block'
         } else {
             ajusteFormDiv.style.display = 'none'
-            return true
         }
 
-        if (this.validaCPF() === false) { ajusteFormParagrafo[0].style.display = 'block' }
-        if (this.validaUsuarioCaracter() === false) { ajusteFormParagrafo[1].style.display = 'block' }
-        if (this.validaUsuarioComprimento() === false) { ajusteFormParagrafo[2].style.display = 'block' }
-        if (this.validaSenha() === false) { ajusteFormParagrafo[3].style.display = 'block' }
-        if (this.validaRepetirSenha() === false) { ajusteFormParagrafo[4].style.display = 'block' }
-        if (this.validaPreenchimento() === false) { ajusteFormParagrafo[5].style.display = 'block' }
+        return validador
     }
 }
 
