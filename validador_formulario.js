@@ -16,7 +16,6 @@ btnLimpar.addEventListener('click', limparFormulario)
 cpf.addEventListener('blur', formataCPF)
 cpf.addEventListener('focus', voltaCPF)
 
-
 function formataCPF() {
     cpf.value = cpf.value.replace(/\D+/g, '')
     cpf.value = cpf.value.slice(0, 3) + '.' + cpf.value.slice(3, 6) + '.' + cpf.value.slice(6, 9) + '-' + cpf.value.slice(9, 11)
@@ -27,24 +26,18 @@ function voltaCPF() {
 }
 
 function enviaFormulario() {
-
-    const form1 = new Formulario(nome, sobrenome, cpf, usuario, senha, repetirSenha)
-
-    form1.validaFormulario()
-
-    // console.log(nome.value)
-    // console.log(sobrenome.value)
-    // console.log(cpf.value)
-    // console.log(usuario.value.length)
-    // console.log(senha.value)
-    // console.log(repetirSenha.value)
-
+    if (form1.validaFormulario() === true) {
+        console.log('O formulário está apto a ser enviado!')
+    } else {
+        console.log('Ajuste as pendências do formulário antes de envia-lo!')
+    }
 }
 
 function limparFormulario() {
     for (let i = 0; i <= inputs.length - 1; i++) {
         inputs[i].value = ''
     }
+    ajusteFormDiv.style.display = 'none'
 }
 
 class Formulario {
@@ -100,67 +93,88 @@ class Formulario {
 
     validaCPF() {
         if (typeof this.cpfLimpo !== 'string' ||
-            this.cpf.value === '' ||
             this.cpfLimpo.length !== 11 ||
             this.verificaSequencia() === true) {
-            ajusteFormDiv.style.display = 'block'
-            ajusteFormParagrafo[0].style.display = 'block'
-        } else {
+            return false
+        } else if (this.novoCPF === this.cpfLimpo) {
             ajusteFormParagrafo[0].style.display = 'none'
+            return true
         }
-        if (this.novoCPF === this.cpfLimpo) return true
     }
 
-    validaUsuario() {
+    validaUsuarioCaracter() {
         const testeUsuario = this.usuario.value.replace(/[a-zA-Z0-9]/g, '')
         if (testeUsuario.length !== 0) {
-            ajusteFormParagrafo[1].style.display = 'block'
+            return false
         } else {
             ajusteFormParagrafo[1].style.display = 'none'
+            return true
         }
+    }
 
+    validaUsuarioComprimento() {
         if (this.usuario.value.length < 3 || this.usuario.value.length > 12) {
-            ajusteFormParagrafo[2].style.display = 'block'
+            return false
         } else {
             ajusteFormParagrafo[2].style.display = 'none'
+            return true
         }
-
     }
 
     validaSenha() {
         if (this.senha.value.length < 6 || this.senha.value.length > 12) {
-            ajusteFormParagrafo[3].style.display = 'block'
+            return false
         } else {
             ajusteFormParagrafo[3].style.display = 'none'
+            return true
         }
-
-        if (this.senha.value !== this.repetirSenha.value) {
-            ajusteFormParagrafo[4].style.display = 'block'
-        } else {
-            ajusteFormParagrafo[4].style.display = 'none'
-        }
-
     }
 
-    validaPreenchimento(){
-        for (let j = 0; j <= inputs.length - 1; j++) {
-            if (inputs[j].value === '') {
-                ajusteFormDiv.style.display = 'block'
-                ajusteFormParagrafo[5].style.display = 'block'
-            } else {
-                // ajusteFormParagrafo[5].style.display = 'none'
+    validaRepetirSenha() {
+        if (this.senha.value !== this.repetirSenha.value) {
+            return false
+        } else {
+            ajusteFormParagrafo[4].style.display = 'none'
+            return true
+        }
+    }
+
+    validaPreenchimento() {
+        for (let i = 0; i <= inputs.length - 1; i++) {
+            if (inputs[i].value === '' || inputs[i].value === 'undefined') {
+                return false
+            }
+        }
+        for (let i = 0; i <= inputs.length - 1; i++) {
+            if (inputs[i].value !== '') {
+                ajusteFormParagrafo[5].style.display = 'none'
+                return true
             }
         }
     }
 
     validaFormulario() {
-        
-        ajusteFormDiv.style.display = 'none'
-        
-        this.validaCPF()
-        this.validaUsuario()
-        this.validaSenha()
-        this.validaPreenchimento()
+
+        if (this.validaCPF() === false ||
+            this.validaUsuarioCaracter() === false ||
+            this.validaUsuarioComprimento() === false ||
+            this.validaSenha() === false ||
+            this.validaRepetirSenha() === false ||
+            this.validaPreenchimento() === false
+        ) {
+            ajusteFormDiv.style.display = 'block'
+        } else {
+            ajusteFormDiv.style.display = 'none'
+            return true
+        }
+
+        if (this.validaCPF() === false) { ajusteFormParagrafo[0].style.display = 'block' }
+        if (this.validaUsuarioCaracter() === false) { ajusteFormParagrafo[1].style.display = 'block' }
+        if (this.validaUsuarioComprimento() === false) { ajusteFormParagrafo[2].style.display = 'block' }
+        if (this.validaSenha() === false) { ajusteFormParagrafo[3].style.display = 'block' }
+        if (this.validaRepetirSenha() === false) { ajusteFormParagrafo[4].style.display = 'block' }
+        if (this.validaPreenchimento() === false) { ajusteFormParagrafo[5].style.display = 'block' }
     }
 }
 
+const form1 = new Formulario(nome, sobrenome, cpf, usuario, senha, repetirSenha)
