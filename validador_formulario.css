@@ -1,13 +1,11 @@
 @charset "UTF-8";
 
 :root {
-    --cor1: #04070df1;
-    --cor2: #F2B988;
-    --cor3: #BF4E6D;
-    --cor4: #A64E4E;
-    --cor5: #1e2a3b;
+    --cor1: #ffffff;
+    --cor2: #0063ef;
+    --cor3: #002963;
     --fonte-padrao: Arial, sans-serif;
-    --fonte-especial:
+    --fonte-especial: ;
 }
 
 * {
@@ -18,8 +16,8 @@
 
 body {
     font-family: var(--fonte-padrao);
-    background-color: var(--cor1);
-    color: var(--cor2);
+    background-image: linear-gradient(to right, #006affc2, #0056ceea ) ;
+    color: var(--cor3);
     width: 100vw;
     height: 100vh;
 }
@@ -31,9 +29,10 @@ main {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    border: 3px solid #d87791c7;
+    border: 3px solid var(--cor3);
     border-radius: 25px 0px 25px 0px;
-    box-shadow: 1px 1px 10px #bf4e6c67;
+    box-shadow: 1px 1px 10px var(--cor3);
+    background-color: var(--cor1);
     width: 40%;
     padding: 20px;
     transform: translate(-50%, -50%);
@@ -43,7 +42,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    font-weight: bold;
+    font-weight: normal;
 }
 
 .titulo-section h2 {
@@ -68,6 +67,11 @@ main {
     height: 25px;
     font-size: 1em;
     padding: 5px;
+    color: var(--cor3)
+}
+
+.labels {
+    font-weight: bold;
 }
 
 .buttons {
@@ -79,7 +83,7 @@ main {
 
 .btns {
     border: 1px solid var(--cor3);
-    background-color: var(--cor3);
+    background-color: var(--cor2);
     color: white;
     width: 125px;
     height: 40px;
@@ -101,7 +105,7 @@ div.erro-formulario {
     right: 2%;
     top: 6%;
     background-color: white;
-    color: black;
+    color: var(--cor3);
     padding: 10px;
     font-size: 0.9em;
     border-radius: 10px;
@@ -130,4 +134,5 @@ footer {
 footer p {
     font-weight: normal;
     font-size: 0.8em;
+    color: var(--cor1);
 }
