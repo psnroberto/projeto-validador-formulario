@@ -29,7 +29,6 @@ main {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    border: 3px solid var(--cor3);
     border-radius: 25px 0px 25px 0px;
     box-shadow: 1px 1px 10px var(--cor3);
     background-color: var(--cor1);
@@ -60,13 +59,14 @@ main {
 .formulario {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
 }
 
 .inputs {
     height: 25px;
     font-size: 1em;
     padding: 5px;
+    margin-bottom: 5px;
     color: var(--cor3)
 }
 
@@ -82,43 +82,52 @@ main {
 }
 
 .btns {
-    border: 1px solid var(--cor3);
     background-color: var(--cor2);
+    border: none;
     color: white;
     width: 125px;
     height: 40px;
     font-weight: bold;
     font-size: 1em;
     cursor: pointer;
-    box-shadow: 1px 1px 5px #bf4e6c7e;
 }
 
 .btns:hover {
-    background-color: #324763;
+    background-color: var(--cor3);
     border: none;
     box-shadow: none;
     transition: 0.2s;
 }
 
-div.erro-formulario {
+.erro-formulario {
     position: absolute;
-    right: 2%;
+    right: 1%;
     top: 6%;
+    width: 27%;
     background-color: white;
     color: var(--cor3);
-    padding: 10px;
     font-size: 0.9em;
     border-radius: 10px;
-    display: none;
 }
 
-div.erro-formulario h3 {
-    margin-bottom: 10px;
+.erro-formulario h3 {
+    padding: 10px;
+    text-align: center;
 }
 
-div.erro-formulario p {
+.erro-formulario p {
     margin-bottom: 5px;
-    display: none;
+    padding: 0px 10px;
+}
+
+.aparece {
+    opacity: 1;
+    transition: 0.3s ease-in-out;
+}
+
+.desaparece {
+    opacity: 0;
+    transition: 0.3s ease-in-out;
 }
 
 footer {
